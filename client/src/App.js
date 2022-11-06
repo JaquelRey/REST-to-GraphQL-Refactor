@@ -12,10 +12,12 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+//graphQL endpoint
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  url: "/graphql",
 });
 
+//middleware for requests; attaches JWT to each req header as auth
 const auth = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -26,6 +28,7 @@ const auth = setContext((_, { headers }) => {
   };
 });
 
+
 const client = new ApolloClient({
   link: auth.concat(httpLink),
   cache: new InMemoryCache(),
@@ -35,25 +38,27 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <Router>
       <>
         <Navbar />
         <Routes>
-          <Route 
-            path='/' 
-            element={<SearchBooks />} 
+          <Route
+            path='/'
+            element={<SearchBooks />}
           />
-          <Route 
-            path='/saved' 
-            element={<SavedBooks />} 
+          <Route
+            path='/saved'
+            element={<SavedBooks />}
           />
-          <Route 
+          <Route
             path='*'
             element={<h1 className='display-2'>Wrong page!</h1>}
           />
         </Routes>
       </>
     </Router>
+    </ApolloProvider>
   );
 }
 
