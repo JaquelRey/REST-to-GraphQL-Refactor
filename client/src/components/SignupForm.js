@@ -15,37 +15,30 @@ const SignupForm = () => {
   const [validated] = useState(false);
   // set state for alerting
   const [showAlert, setShowAlert] = useState(false);
-
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleInputChanges = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
-
   const handleFormSubmission = async (event) => {
     event.preventDefault();
-
     // check form
     const form = event.currentTarget;
-
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
     try {
       const { response } = await addUser({
         variables: { ...userFormData },
       });
       console.log(response);
-
       Auth.login(response.addUser.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
-
     setUserFormData({
       username: "",
       email: "",

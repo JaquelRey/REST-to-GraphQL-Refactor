@@ -5,6 +5,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://Jaquel:zWN64AuSaH9xeC
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false,
+}).catch ((err) => {
+  console.log(err);
 });
+
 
 module.exports = mongoose.connection;
