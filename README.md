@@ -25,9 +25,9 @@ This project is a refactor af an existing RESTful app. It uses Google books API 
 MongoDB with Mongoose, hosted with a cluster on Atlas. Express-Apollo for serving, React for framework, and Node as an engine.  
   
 ## Installation  
-Use ```npm i`` in the root of the directory after cloning.  
+Use ```npm i``` in the root of the directory after cloning.  
 ## Usage  
-To run development mode with concurrently, use the command ```npm run develop``  
+To run development mode with concurrently, use the command ```npm run develop```  
   
 ----  
   ## Contributing  
