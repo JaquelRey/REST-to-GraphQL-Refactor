@@ -9,7 +9,7 @@ This project is a refactor af an existing RESTful app. It uses Google books API 
 
 ## Screenshot
 
-![Screenshot of app](assets/screenshot.PNG)
+![Screenshot of app](Assets/screenshot.PNG)
 
 ## Table of Contents  
 * [Details](#details)  
